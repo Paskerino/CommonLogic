@@ -150,7 +150,7 @@ namespace CommonLogic.Services.Implementations
             PropertyValue[] storeProps = new PropertyValue[1];
             storeProps[0] = new PropertyValue { Name = "FilterName", Value = new uno.Any("calc8") };           
             string saveString = new Uri(filePath).AbsoluteUri;
-            xStorable.storeAsURL(saveString, storeProps);
+            xStorable.storeAsURL(saveString, storeProps); 
         }
         /// <summary>
         /// Закриває поточний документ LibreOffice Calc, зберігаючи його за необхідності.

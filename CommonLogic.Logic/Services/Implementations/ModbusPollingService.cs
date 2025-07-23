@@ -33,7 +33,7 @@ namespace CommonLogic.Services.Implementations
             _cancellationTokenSource = new CancellationTokenSource();
             Logger.Info($"Запуск опитування для пристроя '{device.Name}' з інтервалом {intervalMilliseconds} мс.");
             // Задаємо ім'я лог-файлу для цього пристрою
-            string customLogName = "Stand_UPTM12-1"; // Це ім'я
+            string customLogName = "Stand"; // Це ім'я
             if (LogManager.Configuration != null)
             {
                 LogManager.Configuration.Variables["logFileName"] = customLogName;
