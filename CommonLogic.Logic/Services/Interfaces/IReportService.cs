@@ -10,5 +10,6 @@ namespace CommonLogic.Services.Interfaces
     public interface IReportService
     {
         Task CreateReportFileAsync(GenericReportData reportData, string templateReport,string pathReport);
+
     }
 }

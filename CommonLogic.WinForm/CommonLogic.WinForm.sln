@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36301.6 d17.14
+VisualStudioVersion = 17.14.36301.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonLogic.WinForm", "CommonLogic.WinForm.csproj", "{A219DC4A-A158-497E-B1F6-0EB4B1A49C27}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonLogic.Logic", "..\CommonLogic.Logic\CommonLogic.Logic.csproj", "{5431ABB2-B5D6-42EA-9190-ABBF77998DD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonLogic.WPF", "..\CommonLogic.WPF\CommonLogic.WPF.csproj", "{06C89ABC-E4C9-404A-9766-CEE5D23A16DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5431ABB2-B5D6-42EA-9190-ABBF77998DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5431ABB2-B5D6-42EA-9190-ABBF77998DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5431ABB2-B5D6-42EA-9190-ABBF77998DD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06C89ABC-E4C9-404A-9766-CEE5D23A16DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06C89ABC-E4C9-404A-9766-CEE5D23A16DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06C89ABC-E4C9-404A-9766-CEE5D23A16DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06C89ABC-E4C9-404A-9766-CEE5D23A16DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

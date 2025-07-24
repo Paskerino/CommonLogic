@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CommonLogic.Services.Implementations;
+using CommonLogic.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ namespace CommonLogic.Logic
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run();

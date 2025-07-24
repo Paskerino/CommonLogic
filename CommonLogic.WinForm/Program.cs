@@ -35,7 +35,7 @@ namespace CommonLogic.WinForm
             IReadingRepository readingRepo = new FileReadingRepository(); // Приклад з шляхом
             IModbusService singleShotService = new ModbusService();
             IModbusPollingService pollingService = new ModbusPollingService(singleShotService);
-            IReportService reportService = new ReportService(); // Приклад з шляхом
+            IReportService reportService = new ReportService();
 
             // --- Крок 2: Створюємо екземпляр бізнес-логіки, передаючи йому сервіси ---
             IDataManager dataManager = new DataManager(singleShotService, readingRepo, allDevices, allRules);

@@ -1,0 +1,12 @@
+﻿<Window x:Class="CommonLogic.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WPF Control Panel" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Sensor Value:" FontSize="24"/>
+            <TextBlock Text="{Binding SensorValue}" FontSize="48" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Button Content="Start Polling" Command="{Binding StartPollingCommand}" Margin="20" Padding="10"/>
+        </StackPanel>
+    </Grid>
+</Window>
