@@ -1,0 +1,10 @@
+{
+  "ExitButtonText": "Exit",
+  "SerialNumberText": "Serial Number",
+  "OperatorCode": "Operator Code",
+  "SaveButtonText": "Save",
+  "LanguageChangeLabelText": "Interface Language:",
+  "SetTimeLabelText": "Set system Time:",
+  "Sensor_MainPressure": "Main pressure",
+  "Sensor_Temperature": "Temperature"
+}

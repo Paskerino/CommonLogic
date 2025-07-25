@@ -7,6 +7,7 @@ using CommonLogic.Services.Implementations;
 using CommonLogic.Services.Interfaces;
 using CommonLogic.Services.Workers;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows;
 
 namespace CommonLogic.WPF

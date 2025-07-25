@@ -32,7 +32,7 @@
                     MinWidth="10"
                     Margin="10,0,0,0"
                     HorizontalAlignment="Left">
-                <TextBlock HorizontalAlignment="Left" Text="{Binding SerialNumber}" Foreground="White" FontSize="16"/>
+                <TextBlock HorizontalAlignment="Left" Text="{local:Translate SerialNumberText}" Foreground="White" FontSize="16"/>
             </Button>
             <Button Grid.Column="2"  Command="{Binding ShowInputCommand}" 
          CommandParameter="OperatorCode" 
@@ -42,7 +42,7 @@
          MinWidth="10"
          Margin="10,0,0,0"
          HorizontalAlignment="Left">
-                <TextBlock HorizontalAlignment="Left" Text="{Binding OperatorCode}" Foreground="White" FontSize="16"/>
+                <TextBlock HorizontalAlignment="Left" Text="{local:Translate OperatorCode}" Foreground="White" FontSize="16"/>
             </Button>
         </Grid>
 <!--Middle Bar-->
@@ -77,7 +77,7 @@
                     </Style>
                 </StackPanel.Resources>
 
-                <Button Style="{StaticResource IconButton}">
+                <Button Style="{StaticResource IconButton}" Command="{Binding ShowSettingsCommand}">
                     <Image Source="/Assets/settings1.png"/>
                 </Button>
                 <Button Style="{StaticResource IconButton}">
@@ -101,8 +101,8 @@
                     </Style>
                 </StackPanel.Resources>
                 <Button Content="TEST"/>
-                
-                <Button Content="Вихід" Command="{Binding ExitCommand}"/>
+
+                <Button Content="{local:Translate ExitButtonText}" Command="{Binding ExitCommand}"/>
             </StackPanel>
         </Grid>
     </Grid>

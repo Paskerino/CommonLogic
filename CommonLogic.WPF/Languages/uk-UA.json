@@ -1,0 +1,11 @@
+{
+  "ExitButtonText": "Вихід",
+  "SerialNumberText": "Серійний номер",
+  "OperatorCode": "Код оператора",
+  "SaveButtonText": "Зберегти",
+  "LanguageChangeLabelText": "Мова інтерфейсу:",
+  "SetTimeLabelText": "Встановити системний час:",
+  "Sensor_MainPressure": "Тиск в магістралі",
+  "Sensor_Temperature": "Температура"
+
+}

@@ -68,8 +68,8 @@ namespace CommonLogic.WPF
         public ICommand ShowInputCommand { get; }//
         public ICommand AcceptInputCommand { get; }//
         public ICommand CancelInputCommand { get; }//
-        public ICommand OpenKeypadCommand { get; } 
-
+        public ICommand OpenKeypadCommand { get; }
+        public ICommand ShowSettingsCommand { get; }
 
         public MainViewModel(IDataManager dataManager, IModbusPollingService modbusPolling, List<Device> devices)
         {
@@ -81,6 +81,7 @@ namespace CommonLogic.WPF
             StartPollingCommand = new RelayCommand(StartPolling);
             ExitCommand = new RelayCommand(ExitApplication);
             ShowInputCommand = new RelayCommand(ShowInput);
+            ShowSettingsCommand = new RelayCommand(ShowSettings);
 
             // Таймер для годинника на екрані
             DispatcherTimer timer = new DispatcherTimer();
@@ -90,7 +91,11 @@ namespace CommonLogic.WPF
             PressureValue = "0.0"; // Ініціалізуємо значення тиску
         }
 
-
+        private void ShowSettings(object parameter)
+        {
+            var settingsWindow = new SettingsWindow();
+            settingsWindow.ShowDialog();
+        }
         private void ShowInput(object parameter)
         {
             if (parameter is string propertyName)

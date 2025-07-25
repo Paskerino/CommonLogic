@@ -2,9 +2,10 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:CommonLogic.WPF"
-        Title="Введіть значення" Height="500" Width="340"
-        WindowStyle="ToolWindow" 
+        Title="Введіть значення" 
+        SizeToContent="WidthAndHeight"
         ResizeMode="NoResize" 
-        WindowStartupLocation="CenterOwner">
+        WindowStyle="None"
+        WindowStartupLocation= "CenterScreen">
     <local:NumericKeypad x:Name="KeypadControl"/>
 </Window>

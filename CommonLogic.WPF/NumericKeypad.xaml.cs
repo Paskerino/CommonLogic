@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -35,7 +36,10 @@ namespace CommonLogic.WPF
             if (sender is Button button)
             {
                 string content = button.Content.ToString();
-                if ((content == "," || content == ".") && (DisplayTextBox.Text.Contains(",") || DisplayTextBox.Text.Contains("."))) return;
+                // Дозволяємо ввести до двох двокрапок (для формату HH:mm:ss)
+                if (content == ":" && DisplayTextBox.Text.Count(c => c == ':') >= 2) return;
+
+               // if ((content == "," || content == ".") && (DisplayTextBox.Text.Contains(",") || DisplayTextBox.Text.Contains("."))) return;
 
                 DisplayTextBox.Text += content;
             }
