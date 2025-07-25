@@ -23,6 +23,19 @@ namespace CommonLogic.WPF
         public MainWindow()
         {
             InitializeComponent();
+            this.Loaded += (s, e) =>
+            {
+                if (this.DataContext is MainViewModel vm)
+                {
+                    KeypadControl.OnOk += (text) => vm.AcceptInputCommand.Execute(text);
+                    KeypadControl.OnCancel += () => vm.CancelInputCommand.Execute(null);
+                }
+            };
+        }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            
         }
     }
 }
