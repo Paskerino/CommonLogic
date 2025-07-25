@@ -124,7 +124,10 @@ namespace CommonLogic.WPF
             var pressureSensor = readings.FirstOrDefault(r => r.SensorId == 1); // Шукаємо наш датчик тиску
             if (pressureSensor != null)
             {
-                PressureValue = pressureSensor.Value.ToString("F1");
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    PressureValue = pressureSensor.Value.ToString("F1");
+                });
             }
             var firstReading = readings[0];
             // Оновлюємо властивість. UI оновить себе автоматично!

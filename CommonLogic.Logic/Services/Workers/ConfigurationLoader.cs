@@ -15,8 +15,8 @@ namespace CommonLogic.Services.Workers
             string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
             if (!File.Exists(configFilePath))
             {
-                MessageBox.Show("ПОПЕРЕДЖЕННЯ: Файл конфігурації appsettings.json не знайдено.");
-                return new List<Device>();
+                // Просто кидаємо виняток. UI його зловить і обробить.
+                throw new FileNotFoundException("Файл конфігурації appsettings.json не знайдено.", configFilePath);
             }
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -30,8 +30,8 @@ namespace CommonLogic.Services.Workers
             string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
             if (!File.Exists(configFilePath))
             {
-                MessageBox.Show("ПОПЕРЕДЖЕННЯ: Файл конфігурації appsettings.json не знайдено.");
-                return new List<TriggerRule>();
+                // Просто кидаємо виняток. UI його зловить і обробить.
+                throw new FileNotFoundException("Файл конфігурації appsettings.json не знайдено.", configFilePath);
             }
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
