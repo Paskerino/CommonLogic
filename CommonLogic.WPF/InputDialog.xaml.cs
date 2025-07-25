@@ -3,41 +3,26 @@ using System.Windows.Controls;
 
 namespace CommonLogic.WPF
 {
-    public partial class NumericKeypadWindow : Window
+    public partial class InputDialog : Window
     {
-        public string EnteredValue { get; private set; }
+        public string ResultText { get; private set; }
 
-        public NumericKeypadWindow(string initialValue = "")
+        // Новий конструктор, який приймає початкове значення
+        public InputDialog(string initialValue = "")
         {
             InitializeComponent();
-            ValueTextBox.Text = initialValue;
+            KeypadControl.SetInitialText(initialValue);
         }
 
-        private void NumberButton_Click(object sender, RoutedEventArgs e)
+        private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            ValueTextBox.Text += button.Content.ToString();
+            this.ResultText = KeypadControl.EnteredText;
+            this.DialogResult = true; // Закриває вікно і повертає true
         }
 
-        private void BackspaceButton_Click(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            if (ValueTextBox.Text.Length > 0)
-            {
-                ValueTextBox.Text = ValueTextBox.Text.Substring(0, ValueTextBox.Text.Length - 1);
-            }
-        }
-
-        private void OkButton_Click(object sender, RoutedEventArgs e)
-        {
-            EnteredValue = ValueTextBox.Text;
-            DialogResult = true; // Сигналізує, що користувач натиснув "ОК"
-            Close();
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = false; // Сигналізує, що користувач натиснув "Скасувати"
-            Close();
+            this.DialogResult = false; // Закриває вікно і повертає false
         }
     }
 }

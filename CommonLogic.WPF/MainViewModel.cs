@@ -59,7 +59,7 @@ namespace CommonLogic.WPF
             set { _operatorCode = value; OnPropertyChanged(); }
         }
 
-        }
+        
         private string _activePropertyName;
         private Action<string> _activeInputSetter;
         public ICommand StartPollingCommand { get; }
