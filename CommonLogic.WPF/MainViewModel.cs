@@ -58,20 +58,17 @@ namespace CommonLogic.WPF
             get => _operatorCode;
             set { _operatorCode = value; OnPropertyChanged(); }
         }
-        private bool _isKeypadOpen;
-        public bool IsKeypadOpen
-        {
-            get => _isKeypadOpen;
-            set { _isKeypadOpen = value; OnPropertyChanged(); }
+
         }
         private string _activePropertyName;
         private Action<string> _activeInputSetter;
         public ICommand StartPollingCommand { get; }
         public ICommand StopPollingCommand { get; }
         public ICommand ExitCommand { get; }
-        public ICommand ShowInputCommand { get; }
-        public ICommand AcceptInputCommand { get; }
-        public ICommand CancelInputCommand { get; }
+        public ICommand ShowInputCommand { get; }//
+        public ICommand AcceptInputCommand { get; }//
+        public ICommand CancelInputCommand { get; }//
+        public ICommand OpenKeypadCommand { get; } 
 
 
         public MainViewModel(IDataManager dataManager, IModbusPollingService modbusPolling, List<Device> devices)
@@ -84,8 +81,7 @@ namespace CommonLogic.WPF
             StartPollingCommand = new RelayCommand(StartPolling);
             ExitCommand = new RelayCommand(ExitApplication);
             ShowInputCommand = new RelayCommand(ShowInput);
-            AcceptInputCommand = new RelayCommand(AcceptInput);
-            CancelInputCommand = new RelayCommand(CancelInput);
+
             // Таймер для годинника на екрані
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
@@ -93,42 +89,32 @@ namespace CommonLogic.WPF
             timer.Start();
             PressureValue = "0.0"; // Ініціалізуємо значення тиску
         }
+
+
         private void ShowInput(object parameter)
         {
             if (parameter is string propertyName)
             {
-                _activePropertyName = propertyName;
-                IsKeypadOpen = true;
-            }
-        }
-        private void AcceptInput(object parameter)
-        {
-            if (parameter is string text && !string.IsNullOrEmpty(_activePropertyName))
-            {
-                try
+                // Отримуємо поточне значення властивості за допомогою рефлексії
+                PropertyInfo propertyInfo = this.GetType().GetProperty(propertyName);
+                string initialValue = propertyInfo?.GetValue(this)?.ToString() ?? "";
+
+                // Створюємо і показуємо наше нове вікно
+                var dialog = new InputDialog(initialValue);
+
+                // dialog.ShowDialog() - показує вікно модально (блокує основне)
+                if (dialog.ShowDialog() == true)
                 {
-                    PropertyInfo propertyInfo = this.GetType().GetProperty(_activePropertyName);
+                    // Якщо користувач натиснув OK, оновлюємо властивість
                     if (propertyInfo != null && propertyInfo.CanWrite)
                     {
-                        // Встановлюємо значення для знайденої властивості
-                        propertyInfo.SetValue(this, text);
+                        propertyInfo.SetValue(this, dialog.ResultText);
                     }
                 }
-                catch (Exception ex)
-                {
-                    // Додай логування, якщо щось піде не так
-                    Console.WriteLine($"Reflection Error: {ex.Message}");
-                }
             }
-            IsKeypadOpen = false;
         }
-        
 
-        private void CancelInput(object parameter)
-        {
-            IsKeypadOpen = false;
-        }
-        
+
         private void ExitApplication(object parameter)
         {
             Application.Current.Shutdown();

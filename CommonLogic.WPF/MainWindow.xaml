@@ -105,11 +105,5 @@
                 <Button Content="Вихід" Command="{Binding ExitCommand}"/>
             </StackPanel>
         </Grid>
-
-        <Popup x:Name="KeypadPopup" IsOpen="{Binding IsKeypadOpen}" Placement="Center">
-            <Border BorderBrush="Gray" BorderThickness="1">
-                <local:NumericKeypad x:Name="KeypadControl"/>
-            </Border>
-        </Popup>
     </Grid>
 </Window>
