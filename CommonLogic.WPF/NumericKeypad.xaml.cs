@@ -1,45 +1,59 @@
-﻿
-
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace CommonLogic.WPF
 {
-    public partial class NumericKeypadWindow : Window
+    public partial class NumericKeypad : UserControl
     {
-        public string EnteredValue { get; private set; }
+        // Події для зв'язку з вікном-контейнером
+        public event EventHandler<string> EnterClicked;
+        public event EventHandler CancelClicked;
 
-        public NumericKeypadWindow(string initialValue = "")
+        // Властивість для доступу до введеного тексту
+        public string EnteredText => DisplayTextBox.Text;
+
+        public NumericKeypad()
         {
             InitializeComponent();
-            ValueTextBox.Text = initialValue;
+            // Підписуємося на події кнопок Enter та Cancel
+            EnterButton.Click += (s, e) => EnterClicked?.Invoke(this, DisplayTextBox.Text);
+            CancelButton.Click += (s, e) => CancelClicked?.Invoke(this, EventArgs.Empty);
         }
 
-        private void NumberButton_Click(object sender, RoutedEventArgs e)
+        // Метод для встановлення початкового значення
+        public void SetInitialText(string text)
         {
-            Button button = sender as Button;
-            ValueTextBox.Text += button.Content.ToString();
+            DisplayTextBox.Text = text;
+            DisplayTextBox.Focus();
+            DisplayTextBox.CaretIndex = text.Length;
         }
 
-        private void BackspaceButton_Click(object sender, RoutedEventArgs e)
+        // Обробник для всіх цифрових кнопок та коми
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ValueTextBox.Text.Length > 0)
+            if (sender is Button button)
             {
-                ValueTextBox.Text = ValueTextBox.Text.Substring(0, ValueTextBox.Text.Length - 1);
+                string content = button.Content.ToString();
+                if ((content == "," || content == ".") && (DisplayTextBox.Text.Contains(",") || DisplayTextBox.Text.Contains("."))) return;
+
+                DisplayTextBox.Text += content;
             }
         }
 
-        private void OkButton_Click(object sender, RoutedEventArgs e)
+        // Обробник для кнопки CE (Clear Entry)
+        private void Clear_Click(object sender, RoutedEventArgs e)
         {
-            EnteredValue = ValueTextBox.Text;
-            DialogResult = true; // Сигналізує, що користувач натиснув "ОК"
-            Close();
+            DisplayTextBox.Text = string.Empty;
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        // Обробник для кнопки "назад" (Backspace)
+        private void Backspace_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = false; // Сигналізує, що користувач натиснув "Скасувати"
-            Close();
+            if (DisplayTextBox.Text.Length > 0)
+            {
+                DisplayTextBox.Text = DisplayTextBox.Text.Substring(0, DisplayTextBox.Text.Length - 1);
+            }
         }
     }
 }

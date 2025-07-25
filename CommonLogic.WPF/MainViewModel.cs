@@ -100,7 +100,7 @@ namespace CommonLogic.WPF
                 string initialValue = propertyInfo?.GetValue(this)?.ToString() ?? "";
 
                 // Створюємо і показуємо наше нове вікно
-                var dialog = new InputDialog(initialValue);
+                var dialog = new InputDialog("");
 
                 // dialog.ShowDialog() - показує вікно модально (блокує основне)
                 if (dialog.ShowDialog() == true)

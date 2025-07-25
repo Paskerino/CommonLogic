@@ -6,17 +6,5 @@
         WindowStyle="ToolWindow" 
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterOwner">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <local:NumericKeypad x:Name="KeypadControl" Grid.Row="0"/>
-
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-            <Button Content="OK" Width="80" Margin="5" IsDefault="True" Click="Ok_Click"/>
-            <Button Content="Cancel" Width="80" Margin="5" IsCancel="True" Click="Cancel_Click"/>
-        </StackPanel>
-    </Grid>
+    <local:NumericKeypad x:Name="KeypadControl"/>
 </Window>

@@ -48,7 +48,7 @@
         <Button Content="," Grid.Row="4" Grid.Column="2" Click="Button_Click"/>
         <Button Content="-" Grid.Row="4" Grid.Column="3" Click="Button_Click"/>
 
-        <Button x:Name="OkButton" Content="Enter" Grid.Row="1" Grid.Column="3" Grid.RowSpan="2"/>
+        <Button x:Name="EnterButton" Content="Enter" Grid.Row="1" Grid.Column="3" Grid.RowSpan="2"/>
 
         <Button Content="&lt;-" Grid.Row="3" Grid.Column="3" Click="Backspace_Click"/>
 

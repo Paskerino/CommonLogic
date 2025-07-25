@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 
 namespace CommonLogic.WPF
 {
@@ -7,22 +6,25 @@ namespace CommonLogic.WPF
     {
         public string ResultText { get; private set; }
 
-        // Новий конструктор, який приймає початкове значення
         public InputDialog(string initialValue = "")
         {
             InitializeComponent();
             KeypadControl.SetInitialText(initialValue);
+
+            // Підписуємося на події від нашого UserControl'а
+            KeypadControl.EnterClicked += KeypadControl_OkClicked;
+            KeypadControl.CancelClicked += KeypadControl_CancelClicked;
         }
 
-        private void Ok_Click(object sender, RoutedEventArgs e)
+        private void KeypadControl_OkClicked(object sender, string value)
         {
-            this.ResultText = KeypadControl.EnteredText;
-            this.DialogResult = true; // Закриває вікно і повертає true
+            this.ResultText = value;
+            this.DialogResult = true; // Закриваємо вікно з результатом "успіх"
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        private void KeypadControl_CancelClicked(object sender, System.EventArgs e)
         {
-            this.DialogResult = false; // Закриває вікно і повертає false
+            this.DialogResult = false; // Закриваємо вікно з результатом "скасовано"
         }
     }
 }
