@@ -35,31 +35,27 @@ namespace CommonLogic.WPF
         }
 
         private string _currentTime;
-        public string CurrentTime
-        {
-            get => _currentTime;
-            set { _currentTime = value; OnPropertyChanged(); }
-        }
+        public string CurrentTime { get; set; }
         private string _targetValue = "123.4"; // Значення, яке ми будемо редагувати
         public string TargetValue
         {
             get => _targetValue;
             set { _targetValue = value; OnPropertyChanged(); }
         }
-        private string _serialNumber = "Введіть серійний номер";
-        public string SerialNumber
-        {
-            get => _serialNumber;
-            set { _serialNumber = value; OnPropertyChanged(); }
-        }
+        private string _serialNumberText = "Введіть серійний номер";
+        public string SerialNumberText { get; set; }= "Введіть серійний номер";
+        //{
+        //    get => _serialNumber;
+        //    set { _serialNumber = value; OnPropertyChanged(); }
+        //}
         private string _operatorCode = "Введіть код оператора";
-        public string OperatorCode
-        {
-            get => _operatorCode;
-            set { _operatorCode = value; OnPropertyChanged(); }
-        }
+        public string OperatorCode { get; set; }= "Введіть код оператора";
+        //{
+        //    get => _operatorCode;
+        //    set { _operatorCode = value; OnPropertyChanged(); }
+        //}
 
-        
+
         private string _activePropertyName;
         private Action<string> _activeInputSetter;
         public ICommand StartPollingCommand { get; }
@@ -89,6 +85,7 @@ namespace CommonLogic.WPF
             timer.Tick += (s, e) => { CurrentTime = DateTime.Now.ToString("HH:mm:ss"); };
             timer.Start();
             PressureValue = "0.0"; // Ініціалізуємо значення тиску
+            _serialNumberText = "dddddd";
         }
 
         private void ShowSettings(object parameter)

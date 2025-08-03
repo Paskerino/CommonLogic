@@ -1,7 +1,7 @@
 {
   "ExitButtonText": "Вихід",
-  "SerialNumberText": "Серійний номер",
-  "OperatorCode": "Код оператора",
+  "SerialNumberText": "#-",
+  "OperatorCodeText": "Код оператора-",
   "SaveButtonText": "Зберегти",
   "LanguageChangeLabelText": "Мова інтерфейсу:",
   "SetTimeLabelText": "Встановити системний час:",

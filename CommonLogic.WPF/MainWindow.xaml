@@ -25,14 +25,17 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding CurrentTime}" Foreground="White" FontSize="16"/>
             <Button Grid.Column="1"  Command="{Binding ShowInputCommand}" 
-                    CommandParameter="SerialNumber" 
+                    CommandParameter="SerialNumberText" 
                     Background="Transparent" 
                     Foreground="White"
                     BorderThickness="0" 
                     MinWidth="10"
                     Margin="10,0,0,0"
                     HorizontalAlignment="Left">
-                <TextBlock HorizontalAlignment="Left" Text="{local:Translate SerialNumberText}" Foreground="White" FontSize="16"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Left" Text="{local:Translate SerialNumberText}" FontSize="16"/>
+                    <TextBlock HorizontalAlignment="Left" Text="{ Binding SerialNumberText}" Foreground="White" FontSize="16"/>
+                </StackPanel>                
             </Button>
             <Button Grid.Column="2"  Command="{Binding ShowInputCommand}" 
          CommandParameter="OperatorCode" 
@@ -42,13 +45,16 @@
          MinWidth="10"
          Margin="10,0,0,0"
          HorizontalAlignment="Left">
-                <TextBlock HorizontalAlignment="Left" Text="{local:Translate OperatorCode}" Foreground="White" FontSize="16"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Left" Text="{local:Translate OperatorCodeText}" FontSize="16"/>
+                    <TextBlock HorizontalAlignment="Left" Text="{ Binding OperatorCode}" Foreground="White" FontSize="16"/>
+                </StackPanel>
+                
             </Button>
         </Grid>
 <!--Middle Bar-->
         <Grid Grid.Row="1">
             <Image Source="/Assets/12_4-main.png" Stretch="Uniform"/>
-
             <Canvas>
                 <TextBlock Canvas.Left="636" Canvas.Top="24" 
                            Text="{Binding PressureValue}" 
@@ -56,11 +62,6 @@
                            FontSize="24" 
                            FontWeight="Bold" 
                            TextAlignment="Center"/>
-<!--test panel-->
-                <StackPanel Canvas.Left="50" Canvas.Top="50" Orientation="Horizontal">
-                    <TextBlock Text="{Binding TargetValue}" FontSize="24" Foreground="White" VerticalAlignment="Center"/>
-                    <Button Content="Змінити" Margin="10,0,0,0" Command="{Binding ShowInputCommand}" VerticalAlignment="Center"/>
-                </StackPanel>
             </Canvas>
         </Grid>
 <!--Bottom Bar-->

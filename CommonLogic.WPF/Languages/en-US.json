@@ -1,7 +1,7 @@
 {
   "ExitButtonText": "Exit",
-  "SerialNumberText": "Serial Number",
-  "OperatorCode": "Operator Code",
+  "SerialNumberText": "#-",
+  "OperatorCodeText": "Operator Code-",
   "SaveButtonText": "Save",
   "LanguageChangeLabelText": "Interface Language:",
   "SetTimeLabelText": "Set system Time:",
